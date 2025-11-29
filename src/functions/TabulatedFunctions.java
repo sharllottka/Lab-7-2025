@@ -158,4 +158,37 @@ public class TabulatedFunctions {
         }
         return createTabulatedFunction(clazz, points);
     }
+
+    public static TabulatedFunction inputTabulatedFunction(Class<? extends TabulatedFunction> clazz, InputStream in) throws IOException {
+        DataInputStream dataIn = new DataInputStream(in);
+        int pointsCount = dataIn.readInt();
+        if (pointsCount < 2) {
+            throw new IllegalArgumentException("Количество точек < 2");
+        }
+        FunctionPoint[] points = new FunctionPoint[pointsCount];
+        for (int i = 0; i < pointsCount; i++) {
+            double x = dataIn.readDouble();
+            double y = dataIn.readDouble();
+            points[i] = new FunctionPoint(x, y);
+        }
+        return createTabulatedFunction(clazz, points);
+    }
+
+    public static TabulatedFunction readTabulatedFunction(Class<? extends TabulatedFunction> clazz, Reader in) throws IOException{
+        StreamTokenizer st = new StreamTokenizer(in);
+        st.nextToken();
+        int pointsCount = (int) st.nval;
+        FunctionPoint[] points = new FunctionPoint[pointsCount];
+        if (pointsCount < 2) {
+            throw new IllegalArgumentException("Количество точек < 2");
+        }
+        for (int i = 0; i < pointsCount; i++) {
+            st.nextToken();
+            double x = st.nval;
+            st.nextToken();
+            double y = st.nval;
+            points[i] = new FunctionPoint(x, y);
+        }
+        return createTabulatedFunction(clazz, points);
+    }
 }

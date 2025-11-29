@@ -55,14 +55,14 @@ public class Main {
         double EPS = 1e-9;
 
         System.out.println("Проверка итератора ArrayTabulatedFunction:");
-        TabulatedFunction func1 = new ArrayTabulatedFunction(new FunctionPoint[]{new FunctionPoint(0,0), new FunctionPoint(1,1), new FunctionPoint(2,4)});
+        TabulatedFunction func1 = new ArrayTabulatedFunction(new FunctionPoint[]{new FunctionPoint(0, 0), new FunctionPoint(1, 1), new FunctionPoint(2, 4)});
         for (FunctionPoint p : func1) {
             System.out.println(p);
         }
         System.out.println();
 
         System.out.println("Проверка итератора LinkedListTabulatedFunction:");
-        TabulatedFunction func2 = new LinkedListTabulatedFunction(new FunctionPoint[]{new FunctionPoint(0,0), new FunctionPoint(1,1), new FunctionPoint(2,4)});
+        TabulatedFunction func2 = new LinkedListTabulatedFunction(new FunctionPoint[]{new FunctionPoint(0, 0), new FunctionPoint(1, 1), new FunctionPoint(2, 4)});
         for (FunctionPoint p : func2) {
             System.out.println(p);
         }
@@ -86,10 +86,10 @@ public class Main {
         func = TabulatedFunctions.createTabulatedFunction(ArrayTabulatedFunction.class, 0, 10, 3);
         System.out.println(func.getClass());
         System.out.println(func);
-        func = TabulatedFunctions.createTabulatedFunction(ArrayTabulatedFunction.class, 0, 10, new double[] {0, 10});
+        func = TabulatedFunctions.createTabulatedFunction(ArrayTabulatedFunction.class, 0, 10, new double[]{0, 10});
         System.out.println(func.getClass());
         System.out.println(func);
-        func = TabulatedFunctions.createTabulatedFunction(LinkedListTabulatedFunction.class, new FunctionPoint[] {new FunctionPoint(0, 0), new FunctionPoint(10, 10)});
+        func = TabulatedFunctions.createTabulatedFunction(LinkedListTabulatedFunction.class, new FunctionPoint[]{new FunctionPoint(0, 0), new FunctionPoint(10, 10)});
         System.out.println(func.getClass());
         System.out.println(func);
         func = TabulatedFunctions.tabulate(LinkedListTabulatedFunction.class, new Cos(), 0, Math.PI, 11);
